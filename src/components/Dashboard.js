@@ -47,43 +47,44 @@ export default function Dashboard() {
         
     <Container>
         <NavBar/>
-            
-            <Row>
-                <Col>
-                <h3>CO225</h3>
-                <div>
-                    <DoughnutChart />
-                </div>
-                </Col>
-                <Col>
-                <h3>CO226</h3>
-                <div>
-                    <DoughnutChart />
-                </div>
-                </Col>
-                
-            </Row>
+            <div style={{ marginTop: '20px' }}>
+              <Row>
+                  <Col>
+                  <h3>CO225</h3>
+                  <div>
+                      <DoughnutChart />
+                  </div>
+                  </Col>
+                  <Col>
+                  <h3>CO226</h3>
+                  <div>
+                      <DoughnutChart />
+                  </div>
+                  </Col>
+                  
+              </Row>
     
-            <Row>
-                {courseData.map((courseData, k) => (
-                    <Col key={k} xs={12} md={4} lg={3}>
-                        
-                        <Card style={{ width: '18rem' }}>
-                          <Card.Img variant="top" src="https://via.placeholder.com/150x75" />
-                          <Card.Body>
-                            <Card.Title>{courseData.id}</Card.Title>
-                            <Card.Subtitle className="mb-2 text-muted">{courseData.created_at}</Card.Subtitle>
-                            
-                            <Card.Text>
-                              Hardware software full system
-                            </Card.Text>
-                            <Button variant="primary">Course Page</Button>
-                          </Card.Body>
-                        </Card>
+              <Row>
+                  {courseData.map((courseData, k) => (
+                      <Col key={k} xs={12} md={4} lg={3}>
+                          
+                          <Card style={{ width: '18rem' }}>
+                            <Card.Img variant="top" src="https://via.placeholder.com/150x75" />
+                            <Card.Body>
+                              <Card.Title>{courseData.id}</Card.Title>
+                              <Card.Subtitle className="mb-2 text-muted">{courseData.created_at}</Card.Subtitle>
+                              
+                              <Card.Text>
+                                Hardware software full system
+                              </Card.Text>
+                              <Button variant="primary">Course Page</Button>
+                            </Card.Body>
+                          </Card>
 
-                    </Col>
-                ))}
-            </Row>
+                      </Col>
+                  ))}
+              </Row>
+            </div>
         </Container>
     )
 }

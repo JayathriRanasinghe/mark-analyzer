@@ -6,6 +6,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Image from 'react-bootstrap/Image'
+import './NavBar.css';
 
 export default function NavBar() {
   const [ setError] = useState("")
@@ -30,8 +31,8 @@ export default function NavBar() {
 
   return (
     
-    <>
-    <Navbar bg="light" variant="light" expand="lg" fixed="top" style={{ top:"0", position: "sticky", padding:"10px"}}>
+    
+    <Navbar bg="light" variant="light" expand="lg" sticky="top" className="custom-navbar">
       <Container fluid>
         <Navbar.Brand href="#">mark_analyzer</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
@@ -46,7 +47,7 @@ export default function NavBar() {
             
             <NavDropdown title="Documents" id="navbarScrollingDropdown">
               <NavDropdown.Item href="#action3">Exam timetables</NavDropdown.Item>
-              <NavDropdown.Item href="#action4">
+              <NavDropdown.Item href="http://www.ce.pdn.ac.lk/">
                 PeraCom
               </NavDropdown.Item>
               
@@ -88,6 +89,6 @@ export default function NavBar() {
     
     
     
-    </>
+    
   )
 }

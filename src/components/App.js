@@ -14,8 +14,10 @@ import NavBar from "./NavBar";
 
 function App() {
   return (
+    
     <AuthProvider>
       <Container className="d-flex align-items-center justify-content-center" style={{minHeight: "100vh"}}>
+      
         <div className="w-100">
           <Router>
           
@@ -40,6 +42,7 @@ function App() {
             </AuthProvider>
           </Router>
         </div>
+        
       </Container>
     </AuthProvider>
     
