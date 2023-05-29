@@ -16,7 +16,7 @@ function App() {
   return (
     
     <AuthProvider>
-      <Container className="d-flex align-items-center justify-content-center" style={{minHeight: "100vh"}}>
+      <div className="d-flex align-items-center justify-content-center" style={{minHeight: "100vh"}}>
       
         <div className="w-100">
           <Router>
@@ -44,7 +44,7 @@ function App() {
           </Router>
         </div>
         
-      </Container>
+      </div>
     </AuthProvider>
     
   )

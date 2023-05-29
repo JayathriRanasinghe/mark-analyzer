@@ -7,7 +7,20 @@ import { Doughnut } from 'react-chartjs-2';
 import { ArcElement } from "chart.js";
 import Chart from "chart.js/auto";
 
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/firestore';
+import { FaComments } from 'react-icons/fa';
+import './Dashboard.css';
 
+if (firebase.apps.length === 0) {
+  // Initialize Firebase
+  const app = firebase.initializeApp({
+    // Your Firebase configuration
+  });
+}
+
+// Initialize Firestore
+const firestore = firebase.firestore();
 
 function DoughnutChart() {
     const data = {
@@ -31,25 +44,45 @@ function DoughnutChart() {
     return <Doughnut data={data} options={options} />;
   }
 
+  const handleChatBotClick = () => {
+    // Logic for opening the chat bot
+  };
+
 export default function Dashboard() {
     //https://nba-players.herokuapp.com/players-stats
 
     const [courseData, setCourseData] = useState([]);
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         const response = await fetch('https://api.github.com/events')
+    //         const cData = await response.json()
+    //         setCourseData(cData.slice(0, 3))
+    //     }
+    //     fetchData()
+    // }, [])
     useEffect(() => {
-        const fetchData = async () => {
-            const response = await fetch('https://api.github.com/events')
-            const cData = await response.json()
-            setCourseData(cData.slice(0, 3))
+      const fetchData = async () => {
+        try {
+          const querySnapshot = await firestore.collection('courses').get();
+  
+          const data = querySnapshot.docs.map((doc) => doc.data());
+          setCourseData(data);
+          console.log(data);
+        } catch (error) {
+          console.log('Error fetching data: ', error);
         }
-        fetchData()
-    }, [])
+      };
+  
+      fetchData();
+    }, []);
 
     
 
     return (
         
-    <Container>
+    <div>
         <NavBar/>
+        <Container>
             <div style={{ marginTop: '20px' }}>
               <Row>
                   <Col>
@@ -67,17 +100,17 @@ export default function Dashboard() {
               </Row>
     
               <Row>
-                  {courseData.map((courseData, k) => (
-                      <Col key={k} xs={12} md={4} lg={3}>
+                  {courseData.map((courseData) => (
+                      <Col xs={12} md={3} lg={4} className="mb-4">
                           
-                          <Card style={{ width: '18rem' }}>
-                            <Card.Img variant="top" src="https://via.placeholder.com/150x75" />
+                          <Card style={{ width: '20rem' }}>
+                            <Card.Img variant="top" src="https://i0.wp.com/www.edutechpost.com/wp-content/uploads/2017/09/best-educational-websites.png?fit=800%2C800&ssl=1&resize=1280%2C720" />
                             <Card.Body>
-                              <Card.Title>{courseData.id}</Card.Title>
-                              <Card.Subtitle className="mb-2 text-muted">{courseData.created_at}</Card.Subtitle>
+                              <Card.Title>{courseData.code}: {courseData.name}</Card.Title>
+                              <Card.Subtitle className="mb-2 text-muted">{courseData.coordinator}</Card.Subtitle>
                               
                               <Card.Text>
-                                Hardware software full system
+                                {courseData.batch}
                               </Card.Text>
                               <a href="/course-page">
                                 <Button variant="primary">Course Page</Button>
@@ -92,11 +125,26 @@ export default function Dashboard() {
 
               </Row>
             </div>
+            </Container>
+            {/* Chat bot button */}
+            <div className="chat-bot-button" onClick={handleChatBotClick}>
+              <FaComments className="chat-bot-icon" />
+            </div>
+            <footer>
+            <div className='footer-nav' style={{ marginTop: '20px' }}>
             <section id='contact'>
-              <Contact />
-            </section>
+                <Contact />
+              </section>
+            </div>
+            <div className='footer-sub' style={{ textAlign: 'center' }}>
+              <p>
+                2023 PeraCom, All rights reserved.
+              </p>
+            </div>
+            </footer>
+            
            
-        </Container>
+        </div>
     )
 }
 

@@ -31,8 +31,7 @@ export default function NavBar() {
 
   return (
     
-    
-    <Navbar bg="light" variant="light" expand="lg" sticky="top" className="custom-navbar">
+    <Navbar style={{ backgroundColor: 'white', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)', padding: '10px 20px', paddingLeft: '30px' }} variant="light" expand="lg" sticky="top" className="custom-navbar">
       <Container fluid>
         <Navbar.Brand href="#">mark_analyzer</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
