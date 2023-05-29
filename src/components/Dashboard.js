@@ -11,6 +11,7 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 import { FaComments } from 'react-icons/fa';
 import './Dashboard.css';
+import SearchOptions from './SearchOptions';
 
 if (firebase.apps.length === 0) {
   // Initialize Firebase
@@ -84,7 +85,10 @@ export default function Dashboard() {
         <NavBar/>
         <Container>
             <div style={{ marginTop: '20px' }}>
-              <Row>
+            <Row>
+              <SearchOptions/>
+            </Row>
+              {/* <Row>
                   <Col>
                     <h3>CO225</h3>
                     <div>
@@ -97,9 +101,9 @@ export default function Dashboard() {
                         <DoughnutChart />
                     </div>
                   </Col>  
-              </Row>
+              </Row> */}
     
-              <Row>
+              <Row style={{ marginTop: '30px' }}>
                   {courseData.map((courseData) => (
                       <Col xs={12} md={3} lg={4} className="mb-4">
                           
