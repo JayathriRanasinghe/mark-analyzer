@@ -4,7 +4,7 @@ import { useAuth } from '../contexts/AuthContext'
 import { Link, useNavigate } from 'react-router-dom'
 
 export default function Signup() {
-  
+  const fullnameRef = useRef()
   const emailRef = useRef()
   const passwordRef = useRef()
   const passwordConfirmRef = useRef()
@@ -23,7 +23,7 @@ export default function Signup() {
     try {
         setError('') //setting the error to empty since now there is no error
         setLoading(true)
-        await signup(emailRef.current.value, passwordRef.current.value)
+        await signup(fullnameRef.current.value, emailRef.current.value, passwordRef.current.value)
         navigate('/')
     } catch(error) {
         console.log(error)
@@ -42,6 +42,10 @@ export default function Signup() {
                 
                 {error && <Alert variant = "danger">{error}</Alert>}
                 <Form onSubmit={handleSubmit}>
+                    <Form.Group id='fullname'>
+                        <Form.Label>Full Name</Form.Label>
+                        <Form.Control type='fullname' ref={fullnameRef} required />
+                    </Form.Group>
                     <Form.Group id='email'>
                         <Form.Label>Email</Form.Label>
                         <Form.Control type='email' ref={emailRef} required />

@@ -42,7 +42,7 @@ export default function NavBar() {
             style={{ maxHeight: '100px' }}
             navbarScroll
           >
-            <Nav.Link href="#action1">Home</Nav.Link>
+            <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="#action2">Courses</Nav.Link>
             
             <NavDropdown title="Documents" id="navbarScrollingDropdown">
@@ -61,6 +61,7 @@ export default function NavBar() {
             <Nav.Link href="#" disabled>
               Link
             </Nav.Link>
+            <Nav.Link href="#contact">Contact</Nav.Link>
           </Nav>
           
           <Image src="" roundedCircle={true}></Image>

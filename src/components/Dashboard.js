@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { Card, Row, Col, Container, Button } from "react-bootstrap";
 import NavBar from './NavBar';
+import Contact from './Contact';
 
 import { Doughnut } from 'react-chartjs-2';
 import { ArcElement } from "chart.js";
 import Chart from "chart.js/auto";
+
+
 
 function DoughnutChart() {
     const data = {
@@ -50,18 +53,17 @@ export default function Dashboard() {
             <div style={{ marginTop: '20px' }}>
               <Row>
                   <Col>
-                  <h3>CO225</h3>
-                  <div>
-                      <DoughnutChart />
-                  </div>
+                    <h3>CO225</h3>
+                    <div>
+                        <DoughnutChart />
+                    </div>
                   </Col>
                   <Col>
-                  <h3>CO226</h3>
-                  <div>
-                      <DoughnutChart />
-                  </div>
-                  </Col>
-                  
+                    <h3>CO226</h3>
+                    <div>
+                        <DoughnutChart />
+                    </div>
+                  </Col>  
               </Row>
     
               <Row>
@@ -77,14 +79,23 @@ export default function Dashboard() {
                               <Card.Text>
                                 Hardware software full system
                               </Card.Text>
-                              <Button variant="primary">Course Page</Button>
+                              <a href="/course-page">
+                                <Button variant="primary">Course Page</Button>
+                              </a>  
                             </Card.Body>
                           </Card>
 
                       </Col>
                   ))}
               </Row>
+              <Row>
+
+              </Row>
             </div>
+            <section id='contact'>
+              <Contact />
+            </section>
+           
         </Container>
     )
 }
