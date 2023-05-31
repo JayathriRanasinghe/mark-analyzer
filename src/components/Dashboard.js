@@ -107,7 +107,7 @@ export default function Dashboard() {
                   {courseData.map((courseData) => (
                       <Col xs={12} md={3} lg={4} className="mb-4">
                           
-                          <Card style={{ width: '20rem' }}>
+                          <Card className="hover-card card-animation" style={{ width: '20rem' }}>
                             <Card.Img variant="top" src="https://i0.wp.com/www.edutechpost.com/wp-content/uploads/2017/09/best-educational-websites.png?fit=800%2C800&ssl=1&resize=1280%2C720" />
                             <Card.Body>
                               <Card.Title>{courseData.code}: {courseData.name}</Card.Title>
