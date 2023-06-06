@@ -3,3 +3,15 @@
     justify-content: flex-start !important;
     align-items: flex-start !important;
   }
+
+
+
+/* Light theme */
+.light-theme {
+  background-color: #f5f5f5;
+  color: #000;
+}
+.dark-theme {
+  background-color: #1a1a1a;
+  color: #fff;
+}

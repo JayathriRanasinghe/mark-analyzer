@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from 'react';
 import { Container } from "react-bootstrap";
 import { AuthProvider } from "../contexts/AuthContext"
 import Signup from "./Signup"
@@ -15,6 +15,8 @@ import Contact from "./Contact"
 
 
 function App() {
+  
+
   return (
     
     <AuthProvider>
@@ -24,6 +26,7 @@ function App() {
           <Router>
           
             <AuthProvider>
+
               <Routes>
                 
                 <Route exact path='/' element={<PrivateRoute/>}>
