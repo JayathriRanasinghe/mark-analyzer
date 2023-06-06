@@ -35,7 +35,7 @@
   
   .card:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 15px rgba(23, 113, 202, 0.6);
   }
 
   .card-animation {
@@ -52,3 +52,4 @@
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     }
   }
+

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Card, Row, Col, Container, Button } from "react-bootstrap";
 import NavBar from './NavBar';
-import Contact from './Contact';
+import Footer from './Footer';
 
 import { Doughnut } from 'react-chartjs-2';
 import { ArcElement } from "chart.js";
@@ -11,6 +11,7 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 import { FaComments } from 'react-icons/fa';
 import './Dashboard.css';
+import './Background.css';
 import SearchOptions from './SearchOptions';
 
 if (firebase.apps.length === 0) {
@@ -81,27 +82,16 @@ export default function Dashboard() {
 
     return (
         
-    <div>
+    <div className='content'>
+    <div className="uni-symbol"></div>
+      <div className="circle"></div>
+      <div className="circle2"></div>
         <NavBar/>
         <Container>
             <div style={{ marginTop: '20px' }}>
             <Row>
               <SearchOptions/>
             </Row>
-              {/* <Row>
-                  <Col>
-                    <h3>CO225</h3>
-                    <div>
-                        <DoughnutChart />
-                    </div>
-                  </Col>
-                  <Col>
-                    <h3>CO226</h3>
-                    <div>
-                        <DoughnutChart />
-                    </div>
-                  </Col>  
-              </Row> */}
     
               <Row style={{ marginTop: '30px' }}>
                   {courseData.map((courseData) => (
@@ -126,26 +116,17 @@ export default function Dashboard() {
                   ))}
               </Row>
               <Row>
-
+              <Footer/>
               </Row>
             </div>
-            </Container>
-            {/* Chat bot button */}
             <div className="chat-bot-button" onClick={handleChatBotClick}>
               <FaComments className="chat-bot-icon" />
             </div>
-            <footer>
-            <div className='footer-nav' style={{ marginTop: '20px' }}>
-            <section id='contact'>
-                <Contact />
-              </section>
-            </div>
-            <div className='footer-sub' style={{ textAlign: 'center' }}>
-              <p>
-                2023 PeraCom, All rights reserved.
-              </p>
-            </div>
-            </footer>
+
+            
+            </Container>
+            {/* Chat bot button */}
+            
             
            
         </div>
