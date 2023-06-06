@@ -4,6 +4,7 @@ import { AuthProvider } from "../contexts/AuthContext"
 import Signup from "./Signup"
 import Login from "./Login"
 import Dashboard from "./Dashboard"
+import AdminDashboard from "./AdminDashboard"
 import ForgotPassword from "./ForgotPassword"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import PrivateRoute from "./PrivateRoute";
@@ -11,6 +12,7 @@ import UpdateProfile from "./UpdateProfile";
 import Profile from "./Profile";
 import CoursePage from "./CoursePage";
 import Contact from "./Contact"
+
 
 function App() {
   return (
@@ -25,7 +27,7 @@ function App() {
               <Routes>
                 
                 <Route exact path='/' element={<PrivateRoute/>}>
-                  <Route exact path='/' element={<Dashboard/>}/>
+                  <Route exact path='/' element={<AdminDashboard/>}/>
                 </Route>
 
                 <Route path='/update-profile' element={<PrivateRoute/>}>
