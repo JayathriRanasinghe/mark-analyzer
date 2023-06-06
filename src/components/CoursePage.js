@@ -5,6 +5,7 @@ import NavBar from './NavBar';
 import { Doughnut } from 'react-chartjs-2';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
+import './Coursepage.css'
 
 const MyTable = () => {
     const data = [
@@ -114,9 +115,9 @@ export default function Dashboard() {
 
     return (
         
-    <Container>
+    <div>
         <NavBar/>
-            <div style={{ marginTop: '20px' }}>
+            <div className='content-coursepage' style={{ marginTop: '20px' }}>
               <Row>
                   <Col>
                     <h3>CODE: COURSE_NAME</h3>
@@ -136,7 +137,7 @@ export default function Dashboard() {
                 
               </Row>
             </div>
-        </Container>
+        </div>
     )
 } 
 
