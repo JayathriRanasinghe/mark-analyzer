@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Form, Row, Col, Button } from 'react-bootstrap';
+import './SearchOptions.css'
+
 
 const SearchOptions = () => {
   const [batch, setBatch] = useState('');
@@ -14,7 +16,7 @@ const SearchOptions = () => {
   };
 
   return (
-    <div>
+    <div className='above'>
       {/* <h5>Search course</h5> */}
       <Form>
         <Row>
