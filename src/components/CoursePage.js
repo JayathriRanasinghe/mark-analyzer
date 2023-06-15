@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useLocation,Router } from 'react-router-dom';
 import { Card, Row, Col, Container, Button } from "react-bootstrap";
 import NavBar from './NavBar';
 
@@ -6,6 +7,9 @@ import { Doughnut } from 'react-chartjs-2';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 import './Coursepage.css'
+
+
+
 
 const MyTable = () => {
     const data = [
@@ -19,62 +23,62 @@ const MyTable = () => {
     ];
 
     const generatePDF = () => {
-        const pdf = new jsPDF('p', 'mm', 'a4'); // Specify page orientation and size
-    
-        // Set table headers
-        pdf.setFont('helvetica', 'bold');
-        pdf.setFontSize(12);
-        pdf.text('E/no:'+'E/18/283', 10, 20);
-        pdf.text('Name:'+'Ranasinghe R.D.J.M.', 10, 30);
-        pdf.text('Date:'+'12/12/2023 09:08:45', 10, 40);
-        pdf.text('Name', 10, 60);
-        pdf.text('Full mark', 60, 60);
-        pdf.text('Results', 100, 60);
-    
-        // Set table data
-        // pdf.setFont('helvetica', '');
-        pdf.setFontSize(12);
-        data.forEach((item, index) => {
-          const y = 70 + index * 10; // Adjust the vertical position for each row
-          pdf.text(item.name, 10, y);
-          pdf.text(item.full_mark.toString(), 60, y);
-          pdf.text(item.marks.toString(), 100, y);
-        });
-        
-        
-    
-        // Save the PDF file
-        pdf.save('table.pdf');
-      };
+      const pdf = new jsPDF('p', 'mm', 'a4'); // Specify page orientation and size
+  
+      // Set table headers
+      pdf.setFont('helvetica', 'bold');
+      pdf.setFontSize(12);
+      pdf.text('E/no:'+'E/18/283', 10, 20);
+      pdf.text('Name:'+'Ranasinghe R.D.J.M.', 10, 30);
+      pdf.text('Date:'+'12/12/2023 09:08:45', 10, 40);
+      pdf.text('Name', 10, 60);
+      pdf.text('Full mark', 60, 60);
+      pdf.text('Results', 100, 60);
+  
+      // Set table data
+      // pdf.setFont('helvetica', '');
+      pdf.setFontSize(12);
+      data.forEach((item, index) => {
+        const y = 70 + index * 10; // Adjust the vertical position for each row
+        pdf.text(item.name, 10, y);
+        pdf.text(item.full_mark.toString(), 60, y);
+        pdf.text(item.marks.toString(), 100, y);
+      });
+      
+      
+  
+      // Save the PDF file
+      pdf.save('table.pdf');
+    };
 
     
   
     return (
         <div>
-      <table id="table-content">
-        <thead>
-          <tr>
-            <th style={{ width: '50%' }}>Name</th>
-            <th style={{ width: '30%' }}></th>
-            <th style={{ width: '30%' }}>Result</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data.map((item, index) => (
-            <tr key={index}>
-              <td>{item.name}</td>
-              <td>{item.full_mark}</td>
-              <td>{item.marks}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+          <table id="table-content">
+            <thead>
+              <tr>
+                <th style={{ width: '50%' }}>Name</th>
+                <th style={{ width: '30%' }}></th>
+                <th style={{ width: '30%' }}>Result</th>
+              </tr>
+            </thead>
+            <tbody>
+              {data.map((item, index) => (
+                <tr key={index}>
+                  <td>{item.name}</td>
+                  <td>{item.full_mark}</td>
+                  <td>{item.marks}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
       
-    <Button onClick={generatePDF} variant="primary">Download as PDF</Button>
-    </div>    
+          <Button onClick={generatePDF} variant="primary">Download as PDF</Button>
+        </div>    
       
     );
-  };
+};
 
 function DoughnutChart() {
     const data = {
@@ -98,8 +102,15 @@ function DoughnutChart() {
     return <Doughnut data={data} options={options} />;
   }
 
-export default function Dashboard() {
-    //https://nba-players.herokuapp.com/players-stats
+function CoursePage() {
+    
+    const location = useLocation();
+    console.log(location);
+    // const { data } = location.state;
+
+    // Access the data properties
+    const courseCode = location.state.code;
+    const courseName = location.state.name;
 
     const [courseData, setCourseData] = useState([]);
     useEffect(() => {
@@ -117,10 +128,10 @@ export default function Dashboard() {
         
     <div>
         <NavBar/>
-            <div className='content-coursepage' style={{ marginTop: '20px' }}>
+            <div className='container content-coursepage' style={{ marginTop: '20px' }}>
               <Row>
                   <Col>
-                    <h3>CODE: COURSE_NAME</h3>
+                    <h3>{courseCode}: {courseName}</h3>
                     <div>
                         <DoughnutChart />
                     </div>
@@ -140,4 +151,6 @@ export default function Dashboard() {
         </div>
     )
 } 
+
+export default CoursePage;
 
