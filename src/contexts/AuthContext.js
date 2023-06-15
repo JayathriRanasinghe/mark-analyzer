@@ -12,7 +12,7 @@ export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState()
   const [loading, setLoading] = useState(true)
 
-  async function signup(fullname, email, password){
+  async function signup(acctype,fullname, email, password){
     // return auth.createUserWithEmailAndPassword(email, password)
     try{
       const { user } = await auth.createUserWithEmailAndPassword(email, password);
@@ -24,6 +24,7 @@ export function AuthProvider({ children }) {
     
         try {
           await userRef.set({
+            acctype,
             fullname,
             email,
             createdAt: new Date(),

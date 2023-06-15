@@ -19,12 +19,11 @@ export default function NavBar() {
 
   const toggleTheme = () => {
     setIsDarkTheme(!isDarkTheme);
-    // Additional logic to handle theme change
     console.log("Theme changed!")
   };
 
   useEffect(() => {
-    // Additional logic to apply theme based on the isDarkTheme state
+    // logic to apply theme based on the isDarkTheme state
     const rootElement = document.documentElement;
     console.log(rootElement)
     if (isDarkTheme) {

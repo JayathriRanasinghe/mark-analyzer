@@ -12,6 +12,7 @@ import UpdateProfile from "./UpdateProfile";
 import Profile from "./Profile";
 import CoursePage from "./CoursePage";
 import Contact from "./Contact"
+import UserRole from './UserRole';
 
 
 function App() {
@@ -30,19 +31,21 @@ function App() {
               <Routes>
                 
                 <Route exact path='/' element={<PrivateRoute/>}>
-                  <Route exact path='/' element={<AdminDashboard/>}/>
+                  <Route exact path='/' element={<UserRole/>}/>
                 </Route>
-
+              
                 <Route path='/update-profile' element={<PrivateRoute/>}>
                   <Route path='/update-profile' element={<UpdateProfile/>}/>
                 </Route>
-
+              
                 <Route path="/signup" element = {<Signup/>}></Route>
                 <Route path="/login" element = {<Login/>}></Route>
                 <Route path="/forgot-password" element = {<ForgotPassword/>}></Route>
                 <Route path="/profile" element = {<Profile/>}></Route>
                 <Route path="/course-page" element = {<CoursePage/>}></Route>
                 <Route path="/contact" element = {<Contact/>}></Route>
+                <Route path="/user-dashboard" element = {<Dashboard/>}></Route>
+                <Route path="/admin-dashboard" element = {<AdminDashboard/>}></Route>
 
               </Routes>
             </AuthProvider>

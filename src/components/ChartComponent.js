@@ -1,13 +1,15 @@
 import React, { useEffect, useRef } from 'react';
 import { Bar } from 'react-chartjs-2';
+import { Container } from 'react-bootstrap';
+
 
 const ChartComponent = () => {
   const data = {
-    labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+    labels: ['CO326', 'CO327', 'CO328', 'CO513', 'CO544'],
     datasets: [
       {
-        label: 'Sales',
-        data: [12, 19, 3, 5, 2, 3],
+        label: 'Completion level',
+        data: [85, 70, 80, 90, 50],
         backgroundColor: 'rgba(75, 192, 192, 0.2)',
         borderColor: 'rgba(75, 192, 192, 1)',
         borderWidth: 1,
@@ -28,15 +30,19 @@ const ChartComponent = () => {
     scales: {
       y: {
         beginAtZero: true,
+        max : 100,
       },
     },
   };
 
   return (
-    <div>
-      <h2>Sales Chart</h2>
-      <Bar data={data} options={options} />
-    </div>
+    <Container className="mt-5 ml-3">
+      <div>
+        <h2>E18 Courses</h2>
+        <Bar data={data} options={options} />
+      </div>
+    </Container>
+    
   );
 };
 
