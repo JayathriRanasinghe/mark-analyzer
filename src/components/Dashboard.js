@@ -90,7 +90,7 @@ export default function Dashboard() {
                                 <Button variant="primary">Course Page</Button>
                               </a>   */}
                               <Link
-                                to= '/course-page' state={{code: courseData.code, name: courseData.name}}
+                                to= '/course-page' state={{code: courseData.courseCode, name: courseData.courseName}}
                                 onClick={() => console.log('Data sent:', dataToSend)}
                               >
                                 
