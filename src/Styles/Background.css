@@ -1,0 +1,55 @@
+.content {
+    position: relative;
+    background: linear-gradient(to right, #ffffff, #ffffff, #ffa331);
+  }
+  
+  .content::before {
+    content: '';
+    position: fixed;
+    top: 70px;
+    right: 20px;
+    width: 10%; /* Adjust the size of the background image as desired */
+    height: 90%;
+    background-image: url('/images/University_of_Peradeniya_crest.png');
+    background-repeat: no-repeat;
+    background-position: top right;
+    background-size: contain;
+    
+  }
+  
+
+.uni-symbol{
+  
+    background-image: url('/images/University_of_Peradeniya_crest.png');
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50px; /* Adjust the size of the div as desired */
+    height: 50px; /* Adjust the size of the div as desired */
+    background-image: url('/images/University_of_Peradeniya_crest.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.circle {
+    position: fixed;
+    top: 10px;
+    left: -100px;
+    width: 400px;
+    height: 400px;
+    background-color: rgba(62, 205, 227, 0.5);
+    border-radius: 70%;
+   
+  }
+  
+  .circle2 {
+    position: fixed;
+    top: 300px;
+    right: -100px;
+    width: 800px;
+    height: 800px;
+    background-color: rgba(103, 223, 247, 0.5);
+    border-radius: 50%;
+    
+  }

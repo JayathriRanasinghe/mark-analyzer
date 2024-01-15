@@ -7,8 +7,8 @@ import Footer from './Footer';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 import { FaComments } from 'react-icons/fa';
-import './Dashboard.css';
-import './Background.css';
+import '../Styles/Dashboard.css';
+import '../Styles/Background.css';
 import SearchOptions from './SearchOptions';
 
 if (firebase.apps.length === 0) {
@@ -36,14 +36,12 @@ export default function Dashboard() {
       const catergoryBatch = currentUser.email;
       const enumber = catergoryBatch.slice(0, 6)
       const batch = 'E'+catergoryBatch.slice(1, 3)
-      console.log(batch)
+
       const fetchData = async () => {
         try {
           const querySnapshot = await firestore.collection('courses').get();
-          const data = querySnapshot.docs.map((doc) => doc.data()).filter((course) => course.courseBatch === batch);;
+          const data = querySnapshot.docs.map((doc) => doc.data()).filter((course) => course.courseBatch === batch);
           setCourseData(data);
-          
-          console.log(data);
         } catch (error) {
           console.log('Error fetching data: ', error);
         }
@@ -91,7 +89,6 @@ export default function Dashboard() {
                               </a>   */}
                               <Link
                                 to= '/course-page' state={{code: courseData.courseCode, name: courseData.courseName}}
-                                onClick={() => console.log('Data sent:', dataToSend)}
                               >
                                 
                                 <Button variant="primary">Course Page</Button>

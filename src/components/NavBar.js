@@ -8,7 +8,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import Image from 'react-bootstrap/Image'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
-import './NavBar.css';
+import '../Styles/NavBar.css';
 
 export default function NavBar() {
   const [ setError] = useState("")
@@ -19,13 +19,11 @@ export default function NavBar() {
 
   const toggleTheme = () => {
     setIsDarkTheme(!isDarkTheme);
-    console.log("Theme changed!")
   };
 
   useEffect(() => {
     // logic to apply theme based on the isDarkTheme state
     const rootElement = document.documentElement;
-    console.log(rootElement)
     if (isDarkTheme) {
       rootElement.classList.add('dark-theme');
     } else {
@@ -56,7 +54,7 @@ export default function NavBar() {
         <Navbar.Collapse id="navbarScroll">
           <Nav className="me-auto my-2 my-lg-0" style={{ maxHeight: '100px' }} navbarScroll>
             <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="#action2">Courses</Nav.Link>
+            <Nav.Link href="/user-dashboard">Courses</Nav.Link>
             
             <NavDropdown title="Documents" id="navbarScrollingDropdown">
               <NavDropdown.Item href="#action3">Exam timetables</NavDropdown.Item>

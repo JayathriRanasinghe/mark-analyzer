@@ -1,0 +1,55 @@
+.dashboard {
+    position: relative;
+    /* Other styles for the dashboard */
+  }
+  
+  .chat-bot-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #007bff;
+    color: #fff;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    /* Add box-shadow or other styles for the button */
+  }
+  
+  .chat-bot-icon {
+    font-size: 24px;
+    transition: transform 0.3s ease;
+  }
+
+  .chat-bot-icon:hover {
+    transform: scale(1.2); /* Adjust the values as needed--- to move-- translateX(5px) */
+    font-size: 30px; /* Size of the enlarged icon */
+  }
+  
+  .card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(23, 113, 202, 0.6);
+  }
+
+  .card-animation {
+    animation: enlargeCard 0.3s ease;
+  }
+  
+  @keyframes enlargeCard {
+    from {
+      transform: scale(1);
+      box-shadow: none;
+    }
+    to {
+      transform: scale(1.05);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+  }
+

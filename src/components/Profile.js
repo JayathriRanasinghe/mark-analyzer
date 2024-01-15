@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { Row, Col, Container } from "react-bootstrap";
 import NavBar from './NavBar';
 import Image from 'react-bootstrap/Image'
-import './NavBar.css';
+import '../Styles/NavBar.css';
 
 
 

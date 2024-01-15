@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation,Router } from 'react-router-dom';
+import { useAuth } from "../contexts/AuthContext"
 import { Card, Row, Col, Container, Button } from "react-bootstrap";
 import NavBar from './NavBar';
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/firestore';
 
 import { Doughnut } from 'react-chartjs-2';
-import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
-import './Coursepage.css'
+import '../Styles/Coursepage.css'
 
 
 
 
-const MyTable = () => {
+const MyTable = (studentFullName) => {
     const data = [
       { name: 'Lab 1', full_mark: 100, marks: 95 },
       { name: 'Lab 2', full_mark: 100, marks: 100 },
@@ -29,7 +31,7 @@ const MyTable = () => {
       pdf.setFont('helvetica', 'bold');
       pdf.setFontSize(12);
       pdf.text('E/no:'+'E/18/283', 10, 20);
-      pdf.text('Name:'+'Ranasinghe R.D.J.M.', 10, 30);
+      pdf.text('Name:'+studentFullName, 10, 30);
       pdf.text('Date:'+'12/12/2023 09:08:45', 10, 40);
       pdf.text('Name', 10, 60);
       pdf.text('Full mark', 60, 60);
@@ -102,26 +104,31 @@ function DoughnutChart() {
     return <Doughnut data={data} options={options} />;
   }
 
+  // Initialize Firestore
+const firestore = firebase.firestore();
+
 function CoursePage() {
     
+  const [ setError] = useState("")
+  const { currentUser, logout } = useAuth();
+
     const location = useLocation();
-    console.log(location);
-    // const { data } = location.state;
 
     // Access the data properties
     const courseCode = location.state.code;
     const courseName = location.state.name;
 
-    const [courseData, setCourseData] = useState([]);
+    const [studentData, setStudentData] = useState([]);
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch('https://api.github.com/events')
-            const cData = await response.json()
-            setCourseData(cData.slice(0, 3))
+          const querySnapshot = await firestore.collection('users').get();
+          const data = querySnapshot.docs.map((doc) => doc.data()).filter((user) => user.email === "e18283@eng.pdn.ac.lk");
+          
+          setStudentData(data)
+
         }
         fetchData()
     }, [])
-
     
 
     return (
@@ -141,7 +148,7 @@ function CoursePage() {
               
               <Row>
                 <div>
-                    <MyTable />
+                    {/* <MyTable data={studentData[0].fullname} /> */}
                 </div>
               </Row>
               <Row>

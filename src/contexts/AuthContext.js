@@ -16,7 +16,6 @@ export function AuthProvider({ children }) {
     // return auth.createUserWithEmailAndPassword(email, password)
     try{
       const { user } = await auth.createUserWithEmailAndPassword(email, password);
-      console.log(user);
       //await createUserDocument(user, { displayName });
       const userRef = firestore.doc(`users/${user.uid}`);
       const snapshot = await userRef.get();

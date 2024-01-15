@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Form, Row, Col, Button } from 'react-bootstrap';
-import './SearchOptions.css'
+import '../Styles/SearchOptions.css'
 
 
 const SearchOptions = () => {

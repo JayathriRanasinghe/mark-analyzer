@@ -1,19 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { Card, Row, Col, Container, Button, Form } from "react-bootstrap";
 import NavBar from './NavBar';
-import Footer from './Footer';
-
-import { Doughnut } from 'react-chartjs-2';
-import { ArcElement } from "chart.js";
-import Chart from "chart.js/auto";
 
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
-import { FaComments } from 'react-icons/fa';
-import './Dashboard.css';
-import './Background.css';
+import '../Styles/Dashboard.css';
+import '../Styles/Background.css';
 import ChartComponent from './ChartComponent';
-import SearchOptions from './SearchOptions';
 
 if (firebase.apps.length === 0) {
   // Initialize Firebase

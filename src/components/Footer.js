@@ -1,4 +1,4 @@
-import './Footer.css'
+import '../Styles/Footer.css'
 import Contact from './Contact.js'
 
 export default function NavBar() {
